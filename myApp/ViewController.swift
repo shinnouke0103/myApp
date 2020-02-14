@@ -12,11 +12,15 @@ class ViewController: UIViewController {
     
     @IBOutlet var plusLabel: UILabel!
     @IBOutlet var minusLabel: UILabel!
+    @IBOutlet var minusrevLabel: UILabel!
     @IBOutlet var multLabel: UILabel!
     @IBOutlet var divLabel: UILabel!
+    @IBOutlet var divrevLabel: UILabel!
     @IBOutlet var ruijouLabel: UILabel!
+    @IBOutlet var ruijourevLabel: UILabel!
     @IBOutlet var rootLabel: UILabel!
     @IBOutlet var totalLabel: UILabel!
+    
     @IBOutlet var maruTextField: UITextField!
     @IBOutlet var shikakuTextField: UITextField!
     
@@ -25,9 +29,12 @@ class ViewController: UIViewController {
     var shikaku: Int = 0
     var plusans: Int = 0
     var minusans: Int = 0
+    var minusrevans: Int = 0
     var multans: Int = 0
     var divans: Double = 0
+    var divrevans: Double = 0
     var ruijouans: Double = 0
+    var ruijourevans: Double = 0
     var rootans: Double = 0
     var totalans: Int = 0
     
@@ -38,9 +45,6 @@ class ViewController: UIViewController {
         maruTextField.keyboardType = .numberPad
     }
     
-    
-    
-    
     @IBAction func calculate() {
         if let shikakuText = shikakuTextField.text, let maruText = maruTextField.text {
             if let maru = Int(maruText), let shikaku = Int(shikakuText) {
@@ -50,14 +54,23 @@ class ViewController: UIViewController {
                 minusans = maru - shikaku
                 minusLabel.text = String(minusans)
                 
+                minusrevans = shikaku - maru
+                minusrevLabel.text = String(minusrevans)
+                
                 multans = maru * shikaku
                 multLabel.text = String(multans)
                 
                 divans = Double(maru) / Double(shikaku)
                 divLabel.text = String(divans)
                 
+                divrevans = Double(shikaku) / Double(maru)
+                divrevLabel.text = String(divrevans)
+                
                 ruijouans = pow(Double(maru),Double(shikaku))
                 ruijouLabel.text = String(ruijouans)
+                
+                ruijourevans = pow(Double(shikaku),Double(maru))
+                ruijourevLabel.text = String(ruijourevans)
                 
                 rootans = pow(Double(maru), 1 / Double(shikaku))
                 rootLabel.text = String(rootans)
